@@ -11,24 +11,31 @@
   }
   var ex2_text = document.getElementById('ex2_text');
   var ex2_content = document.getElementById('ex2_content');
-  ex2_text.onchange = function() {
+  ex2_text.oninput = function() {
+
+    const regex = /[A-Za-z]/;
+    const regex2 = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
     if (ex2_text.value.length != 9) {
       ex2_content.innerHTML = "Dlugosc numeru musi byc rowna 9";
-      const regex = /[^A-Za-z]/g;
-      if (regex.test(ex2_text.value)) {
-        ex2_content.innerHTML = "Numer telefonu nie moze zawierac liter";
-        const regex2 = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
-        if (regex2.test(ex2_text.value)) {
-          ex2_content.innerHTML = "Numer telefonu nie moze zawierac znakow specjalnych";
-          if (ex2_text.value.length == 9) {
-            ex2_content.innerHTML = "Numer telefonu jest poprawny";
-          }
-        }
-      }
+
     }
-    
-    
-    
+    else if (regex.test(ex2_text.value)) {
+      ex2_content.innerHTML = "Numer telefonu nie moze zawierac liter";
+
+    }
+
+    else if (regex2.test(ex2_text.value)) {
+      ex2_content.innerHTML = "Numer telefonu nie moze zawierac znakow specjalnych";
+    }
+
+
+    else {
+      ex2_content.innerHTML = "Numer telefonu jest poprawny";
+    }
+
+
+
+
 
   }
 })();
