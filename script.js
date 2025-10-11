@@ -49,6 +49,14 @@
     var element = document.getElementById(data);
     ex3_two.appendChild(element);
   }
-  
+  ex3_one.ondragover = function(event) {
+    event.preventDefault();
+  }
+  ex3_one.ondrop = function(event){
+    event.preventDefault();
+    var data = event.dataTransfer.getData('text/plain');
+    var element = document.getElementById(data);
+    ex3_one.appendChild(element);
+  }
 })();
 
