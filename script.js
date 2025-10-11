@@ -32,11 +32,23 @@
     else {
       ex2_content.innerHTML = "Numer telefonu jest poprawny";
     }
-
-
-
-
-
   }
+  var ex3_element = document.getElementById('ex3_element');
+  var ex3_one = document.getElementById('ex3_one');
+  var ex3_two = document.getElementById('ex3_two');
+  ex3_element.setAttribute('draggable', true);
+  ex3_element.ondragstart = function(event) {
+    event.dataTransfer.setData('text/plain', event.target.id);
+  }
+  ex3_two.ondragover = function(event) {
+    event.preventDefault();
+  }
+  ex3_two.ondrop = function(event){
+    event.preventDefault();
+    var data = event.dataTransfer.getData('text/plain');
+    var element = document.getElementById(data);
+    ex3_two.appendChild(element);
+  }
+  
 })();
 
